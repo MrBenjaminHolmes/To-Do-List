@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap');
+
+:root{
+    --darkerBlue: #222831;
+    --darkBlue:#31363F;
+    --lightBlue:#76ABAE;
+    --LightColour:#EEEEEE;
+}
+
+
+* {
+    font-family: "Josefin Sans", sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    font-family: 'Arial', sans-serif;
+}
+
+.heading{
+    background-color: var(--darkerBlue);
+    padding: 25px;
+}
+.heading>h1{
+    color: var(--LightColour);
+    text-align: center;
+}
+
+.mainContainer{
+    display: grid;
+    height: 100%;
+    grid-template-columns: 1fr 4fr;
+}
+
+.sidebar{
+    display: grid;
+    grid-template-rows: 1fr 1fr 12fr;
+    background-color: var(--darkBlue);
+}
+
+.mainBoard{
+    background-color: var(--LightColour);
+}
+
+.sidebar>*{
+    margin-left: 15px;
+}
+
+#newProject,#newTask{
+    display: flex;
+    align-items: center;
+}
+
+.sidebar>div>p{
+    color: var(--LightColour);
+    font-size: 1vw;
+    margin-left: 25px;
+}
+
+#projects{
+    margin-top: 10px;
+    color: var(--LightColour);
+}
+
+svg{
+    width: 2vw;
+    height: 2vw;
+}
