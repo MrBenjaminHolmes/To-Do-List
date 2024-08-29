@@ -29,12 +29,6 @@ html, body {
     text-align: center;
 }
 
-.mainContainer{
-    display: grid;
-    height: 100%;
-    grid-template-columns: 1fr 4fr;
-}
-
 .sidebar{
     display: grid;
     grid-template-rows: 1fr 1fr 12fr;
@@ -105,4 +99,47 @@ form>input{
 
 .notdisplayed {
     display: none;
+}
+
+.mainContainer{
+    display: grid;
+    height: 100%;
+    grid-template-columns: 1fr 4fr;
+}
+
+.mainBoard{
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+.card{
+    display: flex;
+    background-color: var(--lightBlue);
+    height: min-content;
+    margin: 45px;
+    padding: 10px;
+    transition: all 0.3s ease-in-out;
+    border-radius: 10px;
+}
+
+.remove{
+    margin-left: auto;
+}
+
+.info>h2{
+    color: var(--darkerBlue);
+}
+
+.info>p{
+    color: var(--darkBlue)
+}
+
+.info{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.card:hover{
+    transform: scale(1.01);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.308);
 }

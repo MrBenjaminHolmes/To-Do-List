@@ -1,43 +1,48 @@
 export class Task {
   static tasks = [];
-    constructor(name,importance,date) {
+    constructor(name,note,importance,date) {
       this.name = name;
+      this.note = note
       this.importance = importance;
       this.dueDate = date;
       Task.tasks.push(this);
       console.log(Task.tasks)
     }
-  
-    setName(name) {
-      this.name = name;
-    }
-  
-    getName() {
-      return this.name;
-    }
-  
-    setDate(date) {
-        this.dueDate = date;
-      }
-    
-      getDate() {
-        return this.dueDate;
-      }
-  
-
-      setImportance(importance) {
-        this.importance = importance;
-      }
-    
-      getImportance() {
-        return this.importance;
-      }
-
-
     getDateFormatted() {
       const day = this.dueDate.split('/')[0]
       const month = this.dueDate.split('/')[1]
       const year = this.dueDate.split('/')[2]
       return `${month}/${day}/${year}`
     }
+  }
+
+
+export function createForm(){
+    const formContainer = document.getElementById("formContainer")
+    const form = `
+    <form method="dialog" id="newBook">
+                <h2 class="caption">Enter Task</h2>
+                <label for="name"><b>Name</b></label>
+                <input type="text" id="name" placeholder="Enter Task Name" name="name" required>
+                
+                <label for="importance"><b>Importance</b></label>
+                <select id="importance" name="importance">
+                    <option value="High">High</option>
+                    <option value="Medium">Medium</option>
+                    <option value="Low">Low</option>
+                  </select>
+                
+                <label for="notes"><b>Notes</b></label>
+                <textarea id="notes" name="notes" rows="4" cols="50"> </textarea>
+                
+                <label for="date"><b>Due Date</b></label>
+                <input type="date" id="date" placeholder="Enter Due Date" name="date" required>  
+
+                <button id="submitBtn" type="submit" class="btn submit"">Submit</button>
+                <button type="button" class="btn cancel"">Close</button>
+            </form>
+                `
+
+    formContainer.innerHTML = form;
+
   }

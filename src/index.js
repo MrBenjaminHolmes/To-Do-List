@@ -1,37 +1,48 @@
 import "./styles.css";
 import { Task } from "./Tasks";
+import { Project } from "./Projects";
+import { updateTaskUI } from "./UI";
+import { createForm } from "./Tasks";
 
 const form = document.querySelector("form");
 const newTask = document.querySelector("#newTask");
-const formCancel = document.querySelector(".cancel");
+const taskForm = document.getElementById("formContainer");
 
-function openForm() {
-    document.getElementById("formContainer").classList.remove("notdisplayed");
-    document.getElementById("formContainer").classList.add("displayed");
-  }
-  
-function closeForm() {
-    document.getElementById("formContainer").classList.add("notdisplayed");
-    document.getElementById("formContainer").classList.remove("displayed");
-  }
+function openForm(form) {
+    form.classList.remove("notdisplayed");
+    form.classList.add("displayed");
+    createForm();
+    attachFormListeners();
+}
 
-newTask.addEventListener("click",()=>{
-    openForm()
-})
+function closeForm(form) {
+    form.classList.add("notdisplayed");
+    form.classList.remove("displayed");
+}
 
-formCancel.addEventListener("click",()=>{
-    closeForm()
-})
-
-form.addEventListener("submit", function(e) {
-  e.preventDefault();
-  
-  const data = new FormData(form);
-  const taskName = data.get("name");
-  const taskImportance = data.get("importance");
-  const taskDate = data.get("date");
-  const task = new Task(taskName, taskImportance, taskDate);
-  form.reset();
-  closeForm();
-
+newTask.addEventListener("click", () => {
+    openForm(taskForm);
 });
+
+function attachFormListeners() {
+    const form = document.querySelector("form");
+    const taskformCancel = document.querySelector(".cancel");
+
+    taskformCancel.addEventListener("click", () => {
+        closeForm(taskForm);
+    });
+
+    form.addEventListener("submit", function(e) {
+        e.preventDefault();
+      
+        const data = new FormData(form);
+        const taskName = data.get("name");
+        const taskNote = data.get("note");
+        const taskImportance = data.get("importance");
+        const taskDate = data.get("date");
+        const task = new Task(taskName, taskNote, taskImportance, taskDate);
+        form.reset();
+        closeForm(taskForm)
+        updateTaskUI();
+    });
+}
