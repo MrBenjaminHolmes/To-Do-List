@@ -4,9 +4,10 @@ import { Project } from "./Projects";
 export function updateTaskUI(){
     
     const mainContainer = document.getElementById("mainBoard");
-    const projectsContainer = document.getElementById("projects");
+    const projectsContainer = document.getElementById("list");
+    console.log(projectsContainer)
     projectsContainer.innerHTML = "";
-    Project.projects.forEach(element=>{
+    Project.projectsList.forEach(element=>{
         const projectCard = `<p>${element.name}</p>`
         projectsContainer.innerHTML += projectCard;
     });

@@ -47,7 +47,6 @@ function attachFormListeners(formContainer) {
             const taskImportance = data.get("importance");
             const taskDate = data.get("date");
             const task = new Task(taskName, taskNote, taskImportance, taskDate);
-            updateTaskUI();
         } else if (form.id === "newProject") {
             const projectName = data.get("name");
             const projectTasks = [];
@@ -55,5 +54,6 @@ function attachFormListeners(formContainer) {
         }
         form.reset();
         closeForm(formContainer);
+        updateTaskUI();
     });
 }
