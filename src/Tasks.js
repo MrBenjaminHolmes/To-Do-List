@@ -2,17 +2,11 @@ export class Task {
   static tasks = [];
     constructor(name,note,importance,date) {
       this.name = name;
-      this.note = note
+      this.note = note;
       this.importance = importance;
       this.dueDate = date;
       Task.tasks.push(this);
       console.log(Task.tasks)
-    }
-    getDateFormatted() {
-      const day = this.dueDate.split('/')[0]
-      const month = this.dueDate.split('/')[1]
-      const year = this.dueDate.split('/')[2]
-      return `${month}/${day}/${year}`
     }
   }
 
@@ -20,7 +14,7 @@ export class Task {
 export function createForm(){
     const formContainer = document.getElementById("formContainer")
     const form = `
-    <form method="dialog" id="newBook">
+    <form method="dialog" id="newTask">
                 <h2 class="caption">Enter Task</h2>
                 <label for="name"><b>Name</b></label>
                 <input type="text" id="name" placeholder="Enter Task Name" name="name" required>
