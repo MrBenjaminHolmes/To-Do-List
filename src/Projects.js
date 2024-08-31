@@ -1,10 +1,9 @@
 export class Project{
   static projectsList = [];
-    constructor(name,tasks){
+    constructor(name){
             this.name = name;
-            this.tasks = tasks
+            this.tasks = []
             Project.projectsList.push(this);
-            console.log(Project.projectsList);
     }
 }
 

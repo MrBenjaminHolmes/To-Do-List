@@ -47,7 +47,8 @@ function attachFormListeners(formContainer) {
             const taskNote = data.get("notes");
             const taskImportance = data.get("importance");
             const taskDate = data.get("date");
-            const task = new Task(taskName, taskNote, taskImportance, taskDate);
+            const taskProject = data.get("project");
+            const task = new Task(taskName, taskNote, taskImportance, taskDate, taskProject);
         } else if (form.id === "newProject") {
             const projectName = data.get("name");
             const projectTasks = [];
