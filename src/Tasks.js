@@ -1,3 +1,5 @@
+import { Project } from "./Projects";
+
 export class Task {
   static tasks = [];
     constructor(name,note,importance,date) {
@@ -25,6 +27,10 @@ export function createForm(){
                     <option value="Medium">Medium</option>
                     <option value="Low">Low</option>
                   </select>
+
+                <label for="project"><b>Project</b></label>
+                <select id="project" name="project">
+                  </select>
                 
                 <label for="notes"><b>Notes</b></label>
                 <textarea id="notes" name="notes" rows="4" cols="50"> </textarea>
@@ -38,5 +44,14 @@ export function createForm(){
                 `
 
     formContainer.innerHTML = form;
+
+    Project.projectsList.forEach(element => {
+      const optionElement = document.createElement("option");
+      const selectBox = document.querySelector("#project")
+      selectBox.appendChild(optionElement);
+      optionElement.value = (`${element.name}`)
+      optionElement.innerHTML = (`${element.name}`)
+
+  });
 
   }

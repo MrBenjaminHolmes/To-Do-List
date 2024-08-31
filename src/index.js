@@ -4,11 +4,12 @@ import { Project,createProjectForm} from "./Projects";
 import { updateTaskUI } from "./UI";
 import { createForm} from "./Tasks";
 
-// Get references to the form containers and buttons
 const newTaskBtn = document.querySelector("#newTask");
 const newProjectBtn = document.querySelector("#newProject");
 const formContainer = document.getElementById("formContainer");
 
+const Allproject = new Project("All", Task.tasks);
+updateTaskUI();
 
 function openForm(form, createFormFn) {
     form.classList.remove("notdisplayed");
@@ -31,7 +32,7 @@ newProjectBtn.addEventListener("click", () => {
 });
 
 function attachFormListeners(formContainer) {
-    const form = formContainer.querySelector("form"); // Select the form within the container
+    const form = formContainer.querySelector("form");
     const taskformCancel = form.querySelector(".cancel");
 
     taskformCancel.addEventListener("click", () => {
@@ -55,5 +56,6 @@ function attachFormListeners(formContainer) {
         form.reset();
         closeForm(formContainer);
         updateTaskUI();
+        console.log(projects)
     });
 }
