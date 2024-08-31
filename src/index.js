@@ -1,15 +1,17 @@
 import "./styles.css";
 import { Task } from "./Tasks";
 import { Project,createProjectForm} from "./Projects";
-import { updateTaskUI } from "./UI";
+import { updateUI } from "./UI";
 import { createForm} from "./Tasks";
 
 const newTaskBtn = document.querySelector("#newTask");
 const newProjectBtn = document.querySelector("#newProject");
 const formContainer = document.getElementById("formContainer");
 
+
+
 const Allproject = new Project("All", Task.tasks);
-updateTaskUI();
+updateUI();
 
 function openForm(form, createFormFn) {
     form.classList.remove("notdisplayed");
@@ -22,6 +24,8 @@ function closeForm(form) {
     form.classList.add("notdisplayed");
     form.classList.remove("displayed");
 }
+
+
 
 newTaskBtn.addEventListener("click", () => {
     openForm(formContainer, createForm);
@@ -56,7 +60,9 @@ function attachFormListeners(formContainer) {
         }
         form.reset();
         closeForm(formContainer);
-        updateTaskUI();
-        console.log(projects)
+        updateUI();
+
     });
 }
+
+

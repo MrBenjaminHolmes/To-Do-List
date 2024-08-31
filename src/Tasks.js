@@ -16,8 +16,7 @@ export class Task {
     }
 
     Task.tasks.push(this);
-    console.log(Task.tasks);
-    console.log(Project.projectsList); // To check if the task is added to the project
+
   }
 }
 
@@ -62,5 +61,7 @@ export function createForm(){
       optionElement.innerHTML = (`${element.name}`)
 
   });
+  
+  
 
   }

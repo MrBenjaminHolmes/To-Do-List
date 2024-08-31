@@ -1,7 +1,7 @@
 import { Task } from "./Tasks";
 import { Project } from "./Projects";
 
- export function updateTaskUI(){
+ export function updateUI(){
     const mainContainer = document.getElementById("mainBoard");
     const projectsContainer = document.getElementById("list");
     projectsContainer.innerHTML = "";
@@ -23,4 +23,25 @@ import { Project } from "./Projects";
             </div>`;
         mainContainer.innerHTML += card;
     });
+    function addTasks( projectName) {
+        // Find the project with the matching name
+        const project = Project.projectsList.find(element => element.name === projectName);
+    
+        // Check if the project was found
+        if (project) {
+            // Loop through and print each task
+            project.tasks.forEach(task => {
+                console.log(task);
+            });
+        } else {
+            console.log(`Project with name ${projectName} not found.`);
+        }
+    }
+    const removeBtn = document.querySelectorAll(".card>button");
+    removeBtn.forEach(element => {
+        element.addEventListener("click",()=>{
+            console.log(element)
+        })
+    });
+     
 }
