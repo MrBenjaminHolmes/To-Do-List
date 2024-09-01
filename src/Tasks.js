@@ -1,25 +1,32 @@
 import { Project } from "./Projects";
-
 export class Task {
-  static tasks = [];
+  static tasks = [];  // Static array to hold all tasks
+
   constructor(name, note, importance, date, project) {
-    this.name = name;
-    this.note = note;
-    this.importance = importance;
-    this.dueDate = date;
-    this.project = project;
+      this.name = name;
+      this.note = note;
+      this.importance = importance;
+      this.dueDate = date;
+      this.project = project;
 
-    // Find the project and push the task to the project's task list
-    const selectedProject = Project.projectsList.find(proj => proj.name === this.project);
-    if (selectedProject) {
-      selectedProject.tasks.push(this);
-    }
+      const selectedProject = Project.projectsList.find(proj => proj.name === this.project);
+      if (selectedProject) {
+          selectedProject.tasks.push(this); 
+      }
+      Task.tasks.push(this);
+  }
 
-    Task.tasks.push(this);
+  static removeTask(taskToRemove) {
+      Project.projectsList.forEach(project => {
+          const index = project.tasks.indexOf(taskToRemove);
+          if (index > -1) {
+              project.tasks.splice(index, 1);
+          }
+      });
 
+      Task.tasks = Task.tasks.filter(task => task !== taskToRemove);
   }
 }
-
 
 export function createForm(){
     const formContainer = document.getElementById("formContainer")
