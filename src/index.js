@@ -65,12 +65,14 @@ function attachFormListeners(formContainer) {
         taskDate,
         taskProject
       );
+      addTasks(taskProject);
       Allproject.tasks = Task.tasks;
     } else if (form.id === "newProject") {
       const projectName = data.get("name");
       const projectTasks = [];
       const project = new Project(projectName, projectTasks);
     }
+
     form.reset();
     closeForm(formContainer);
     updateUI();
