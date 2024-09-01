@@ -1,36 +1,36 @@
 import { Project } from "./Projects";
 export class Task {
-  static tasks = [];  // Static array to hold all tasks
+  static tasks = [];
 
   constructor(name, note, importance, date, project) {
-      this.name = name;
-      this.note = note;
-      this.importance = importance;
-      this.dueDate = date;
-      this.project = project;
+    this.name = name;
+    this.note = note;
+    this.importance = importance;
+    this.dueDate = date;
+    this.project = project;
 
-      const selectedProject = Project.projectsList.find(proj => proj.name === this.project);
-      if (selectedProject) {
-          selectedProject.tasks.push(this); 
-      }
-      Task.tasks.push(this);
+    const selectedProject = Project.projectsList.find(
+      (proj) => proj.name === this.project
+    );
+    if (selectedProject) {
+      selectedProject.tasks.push(this);
+    }
+    Task.tasks.push(this);
   }
-
   static removeTask(taskToRemove) {
-      Project.projectsList.forEach(project => {
-          const index = project.tasks.indexOf(taskToRemove);
-          if (index > -1) {
-              project.tasks.splice(index, 1);
-          }
-      });
+    Project.projectsList.forEach((project) => {
+      const index = project.tasks.indexOf(taskToRemove);
+      if (index > -1) {
+        project.tasks.splice(index, 1);
+      }
+    });
 
-      Task.tasks = Task.tasks.filter(task => task !== taskToRemove);
+    Task.tasks = Task.tasks.filter((task) => task !== taskToRemove);
   }
 }
-
-export function createForm(){
-    const formContainer = document.getElementById("formContainer")
-    const form = `
+export function createForm() {
+  const formContainer = document.getElementById("formContainer");
+  const form = `
     <form method="dialog" id="newTask">
                 <h2 class="caption">Enter Task</h2>
                 <label for="name"><b>Name</b></label>
@@ -56,19 +56,13 @@ export function createForm(){
                 <button id="submitBtn" type="submit" class="btn submit"">Submit</button>
                 <button type="button" class="btn cancel"">Close</button>
             </form>
-                `
-
-    formContainer.innerHTML = form;
-
-    Project.projectsList.forEach(element => {
-      const optionElement = document.createElement("option");
-      const selectBox = document.querySelector("#project")
-      selectBox.appendChild(optionElement);
-      optionElement.value = (`${element.name}`)
-      optionElement.innerHTML = (`${element.name}`)
-
+                `;
+  formContainer.innerHTML = form;
+  Project.projectsList.forEach((element) => {
+    const optionElement = document.createElement("option");
+    const selectBox = document.querySelector("#project");
+    selectBox.appendChild(optionElement);
+    optionElement.value = `${element.name}`;
+    optionElement.innerHTML = `${element.name}`;
   });
-  
-  
-
-  }
+}

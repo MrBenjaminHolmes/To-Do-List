@@ -1,14 +1,13 @@
-export class Project{
+export class Project {
   static projectsList = [];
-    constructor(name){
-            this.name = name;
-            this.tasks = []
-            Project.projectsList.push(this);
-    }
+  constructor(name) {
+    this.name = name;
+    this.tasks = [];
+    Project.projectsList.push(this);
+  }
 }
-
-export function createProjectForm(){
-  const formContainer = document.getElementById("formContainer")
+export function createProjectForm() {
+  const formContainer = document.getElementById("formContainer");
   const form = `
   <form method="dialog" id="newProject">
               <h2 class="caption">Enter Project</h2>
@@ -18,10 +17,7 @@ export function createProjectForm(){
               <button id="submitBtn" type="submit" class="btn submit"">Submit</button>
               <button type="button" class="btn cancel"">Close</button>
           </form>
-              `
+              `;
 
   formContainer.innerHTML = form;
-
-  
-
 }
