@@ -40,7 +40,8 @@ import { Project } from "./Projects";
     const removeBtn = document.querySelectorAll(".card>button");
     removeBtn.forEach(element => {
         element.addEventListener("click",()=>{
-            console.log(element)
+            Task.tasks.pop(element)
+            updateUI()
         })
     });
      
