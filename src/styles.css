@@ -43,6 +43,34 @@ body {
   margin-left: 15px;
 }
 
+.projectDiv {
+  display: flex;
+  transition: all 0.3s ease-in-out;
+  width: 95%;
+}
+
+.projectDiv > svg {
+  margin-right: 10px;
+  scale: 0.8;
+  transition: all 0.3s ease-in-out;
+}
+
+.projectDiv > svg:hover {
+  transform: scale(1.2);
+}
+
+.high {
+  color: red;
+}
+
+.medium {
+  color: orange;
+}
+
+.low {
+  color: lime;
+}
+
 #newProject,
 #newTask,
 #homeBtn {
@@ -206,7 +234,7 @@ form > button {
   transition: all 0.3s ease-in-out;
 }
 
-.project:hover {
+.projectDiv:hover {
   transform: scale(1.02);
   background-color: #222831;
 }

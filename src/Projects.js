@@ -2,13 +2,22 @@ import { saveData } from ".";
 
 export class Project {
   static projectsList = [];
+
   constructor(name) {
     this.name = name;
     this.tasks = [];
     Project.projectsList.push(this);
     saveData();
   }
+
+  static removeProject(projectToRemove) {
+    Project.projectsList = Project.projectsList.filter(
+      (project) => project !== projectToRemove
+    );
+    saveData();
+  }
 }
+
 export function createProjectForm() {
   const formContainer = document.getElementById("formContainer");
   const form = `
