@@ -31,7 +31,7 @@ body {
 
 .sidebar {
   display: grid;
-  grid-template-rows: 1fr 1fr 12fr;
+  grid-template-rows: 1fr 1fr 1fr 12fr;
   background-color: var(--darkBlue);
 }
 
@@ -44,14 +44,18 @@ body {
 }
 
 #newProject,
-#newTask {
+#newTask,
+#homeBtn {
   display: flex;
+  margin-top: 10px;
   transition: all 0.3s ease-in-out;
   align-items: center;
+  height: max-content;
 }
 
 #newProject:hover,
-#newTask:hover {
+#newTask:hover,
+#homeBtn:hover {
   transform: scale(1.03);
 }
 
@@ -205,4 +209,8 @@ form > button {
 .project:hover {
   transform: scale(1.02);
   background-color: #222831;
+}
+
+#newProject {
+  height: min-content;
 }

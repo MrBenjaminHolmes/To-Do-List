@@ -3,22 +3,13 @@ import { Task } from "./Tasks";
 import { Project, createProjectForm } from "./Projects";
 import { updateUI } from "./UI";
 import { createForm } from "./Tasks";
-import { addTasks } from "./UI";
+import { addTasks, addAllTasks } from "./UI";
 
 const newTaskBtn = document.querySelector("#newTask");
 const newProjectBtn = document.querySelector("#newProject");
 const formContainer = document.getElementById("formContainer");
+const homeBtn = document.getElementById("homeBtn");
 
-const Allproject = new Project("All", Task.tasks);
-const other = new Project("Other");
-const deafaultTask = new Task(
-  "Walk The Dog",
-  "Take the dog for a nice long walk around the park",
-  "High",
-  "01/06/2024",
-  "All"
-);
-addTasks("All");
 updateUI();
 
 function openForm(form, createFormFn) {
@@ -32,14 +23,6 @@ function closeForm(form) {
   form.classList.add("notdisplayed");
   form.classList.remove("displayed");
 }
-
-newTaskBtn.addEventListener("click", () => {
-  openForm(formContainer, createForm);
-});
-
-newProjectBtn.addEventListener("click", () => {
-  openForm(formContainer, createProjectForm);
-});
 
 function attachFormListeners(formContainer) {
   const form = formContainer.querySelector("form");
@@ -58,19 +41,11 @@ function attachFormListeners(formContainer) {
       const taskImportance = data.get("importance");
       const taskDate = data.get("date");
       const taskProject = data.get("project");
-      const task = new Task(
-        taskName,
-        taskNote,
-        taskImportance,
-        taskDate,
-        taskProject
-      );
+      new Task(taskName, taskNote, taskImportance, taskDate, taskProject);
       addTasks(taskProject);
-      Allproject.tasks = Task.tasks;
     } else if (form.id === "newProject") {
       const projectName = data.get("name");
-      const projectTasks = [];
-      const project = new Project(projectName, projectTasks);
+      new Project(projectName);
     }
 
     form.reset();
@@ -78,3 +53,15 @@ function attachFormListeners(formContainer) {
     updateUI();
   });
 }
+
+newTaskBtn.addEventListener("click", () => {
+  openForm(formContainer, createForm);
+});
+
+newProjectBtn.addEventListener("click", () => {
+  openForm(formContainer, createProjectForm);
+});
+
+homeBtn.addEventListener("click", () => {
+  addAllTasks();
+});
