@@ -1,9 +1,12 @@
+import { saveData } from ".";
+
 export class Project {
   static projectsList = [];
   constructor(name) {
     this.name = name;
     this.tasks = [];
     Project.projectsList.push(this);
+    saveData();
   }
 }
 export function createProjectForm() {

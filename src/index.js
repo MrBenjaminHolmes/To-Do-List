@@ -12,6 +12,7 @@ const homeBtn = document.getElementById("homeBtn");
 
 function loadData() {
   Task.tasks = JSON.parse(localStorage.getItem("Tasks"));
+  Project.projectsList = JSON.parse(localStorage.getItem("Projects"));
   updateUI();
 }
 
