@@ -10,6 +10,18 @@ const newProjectBtn = document.querySelector("#newProject");
 const formContainer = document.getElementById("formContainer");
 const homeBtn = document.getElementById("homeBtn");
 
+function loadData() {
+  Task.tasks = JSON.parse(localStorage.getItem("Tasks"));
+  updateUI();
+}
+
+export function saveData() {
+  localStorage.setItem("Tasks", JSON.stringify(Task.tasks));
+  localStorage.setItem("Projects", JSON.stringify(Project.projectsList));
+}
+
+loadData();
+addAllTasks();
 updateUI();
 
 function openForm(form, createFormFn) {
@@ -51,6 +63,7 @@ function attachFormListeners(formContainer) {
     form.reset();
     closeForm(formContainer);
     updateUI();
+    saveData();
   });
 }
 

@@ -1,4 +1,5 @@
 import { Project } from "./Projects";
+import { saveData } from ".";
 export class Task {
   static tasks = [];
 
@@ -26,6 +27,7 @@ export class Task {
     });
 
     Task.tasks = Task.tasks.filter((task) => task !== taskToRemove);
+    saveData();
   }
 }
 export function createForm() {
