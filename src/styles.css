@@ -22,8 +22,10 @@ body {
 
 .heading {
   background-color: var(--darkerBlue);
+  display: flex;
   padding: 25px;
 }
+
 .heading > h1 {
   color: var(--LightColour);
   text-align: center;
@@ -60,15 +62,15 @@ body {
 }
 
 .high {
-  color: red;
+  color: #d83a3a;
 }
 
 .medium {
-  color: orange;
+  color: rgb(243, 201, 15);
 }
 
 .low {
-  color: lime;
+  color: rgb(88, 207, 88);
 }
 
 #newProject,
